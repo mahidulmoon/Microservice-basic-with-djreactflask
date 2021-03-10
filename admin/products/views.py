@@ -22,7 +22,9 @@ class ProductViewSet(viewsets.ViewSet):
 
     
     def retrieve(self,request,pk=None):
-        pass
+        product = Product.objects.get(id=pk)
+        serializer = ProductSerializer(product)
+        return Response(serializer.data)
 
 
     def update(self,request,pk=None):
