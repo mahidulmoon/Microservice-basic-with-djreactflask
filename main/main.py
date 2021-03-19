@@ -1,9 +1,11 @@
 from flask import Flask
+from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import UniqueConstraint
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://postgres:1234@localhost:5432/microservice"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 CORS(app)
 
 db = SQLAlchemy(app)
